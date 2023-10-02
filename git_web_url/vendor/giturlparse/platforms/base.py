@@ -30,7 +30,7 @@ class BasePlatform:
 
         # Precompile DOMAINS
         if self.DOMAINS:
-            self.COMPILED_DOMAINS = (re.compile(domain, re.IGNORECASE) for domain in self.DOMAINS)
+            self.COMPILED_DOMAINS = [re.compile(domain, re.IGNORECASE) for domain in self.DOMAINS]
         else:
             self.COMPILED_DOMAINS = None
 

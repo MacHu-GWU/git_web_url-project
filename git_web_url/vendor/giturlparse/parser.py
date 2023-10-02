@@ -34,6 +34,7 @@ def parse(url, check_domain=True):
             # print(name, protocol, regex)
             # Match current regex against URL
             match = regex.match(url)
+            # print(name, platform, protocol, regex, url, match)
 
             # Skip if not matched
             if not match:
@@ -41,10 +42,19 @@ def parse(url, check_domain=True):
 
             # Skip if domain is bad
             domain = match.group("domain")
+            # print(name, platform, protocol, regex, url, match, domain)
             # print('[%s] DOMAIN = %s' % (url, domain,))
             if check_domain:
-                if platform.DOMAINS and domain not in platform.DOMAINS:
-                    continue
+                if platform.DOMAINS:
+                    is_match = False
+                    for regex in platform.COMPILED_DOMAINS:
+                        match_domain = regex.match(domain)
+                        # print(regex, domain, match_domain)
+                        if match_domain:
+                            is_match = True
+                            break
+                    if is_match is False:
+                        continue
                 if platform.SKIP_DOMAINS and domain in platform.SKIP_DOMAINS:
                     continue
 

@@ -5,7 +5,7 @@ class GitHubPlatform(BasePlatform):
     PATTERNS = {
         "https": (
             r"(?P<protocols>(git\+)?(?P<protocol>https))://"
-            r"((?P<username>[^/]+?):(?P<access_token>[^/]+?)@)?(?P<domain>[^/]+?)"
+            r"((?P<username>[^/]?):?(?P<access_token>[^/]+?)@)?(?P<domain>[^/]+?)"
             r"(?P<pathname>/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
         "ssh": (
@@ -28,7 +28,7 @@ class GitHubPlatform(BasePlatform):
         "github.com",
         "gist.github.com",
         "github\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
-        # "gist.github.[^/]+?",
+        "gist.github\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
     )
     DEFAULTS = {"_user": "git"}
 
