@@ -1,3 +1,4 @@
+from .platforms import PlatformEnum
 from .parser import parse as _parse
 from .result import GitUrlParsed
 
