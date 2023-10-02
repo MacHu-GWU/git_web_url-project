@@ -28,6 +28,12 @@ class BasePlatform:
         # Supported protocols
         self.PROTOCOLS = self.PATTERNS.keys()
 
+        # Precompile DOMAINS
+        if self.DOMAINS:
+            self.COMPILED_DOMAINS = (re.compile(domain, re.IGNORECASE) for domain in self.DOMAINS)
+        else:
+            self.COMPILED_DOMAINS = None
+
         if self.__class__ == BasePlatform:
             sub = [subclass.SKIP_DOMAINS for subclass in self.__class__.__subclasses__() if subclass.SKIP_DOMAINS]
             if sub:

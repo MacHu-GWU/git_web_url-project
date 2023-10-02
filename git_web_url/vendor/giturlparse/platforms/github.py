@@ -27,6 +27,8 @@ class GitHubPlatform(BasePlatform):
     DOMAINS = (
         "github.com",
         "gist.github.com",
+        "github\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
+        # "gist.github.[^/]+?",
     )
     DEFAULTS = {"_user": "git"}
 
