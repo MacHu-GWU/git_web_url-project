@@ -1,4 +1,5 @@
 from .assembla import AssemblaPlatform
+from .aws_codecommit import AwsCodeCommitPlatform
 from .base import BasePlatform
 from .bitbucket import BitbucketPlatform
 from .friendcode import FriendCodePlatform
@@ -8,10 +9,11 @@ from .gitlab import GitLabPlatform
 # Supported platforms
 PLATFORMS = [
     # name -> Platform object
-    ("github", GitHubPlatform()),
+    ("assembla", AssemblaPlatform()),
+    ("aws_codecommit", AwsCodeCommitPlatform()),
     ("bitbucket", BitbucketPlatform()),
     ("friendcode", FriendCodePlatform()),
-    ("assembla", AssemblaPlatform()),
+    ("github", GitHubPlatform()),
     ("gitlab", GitLabPlatform()),
     # Match url
     ("base", BasePlatform()),
