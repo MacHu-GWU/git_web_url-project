@@ -21,6 +21,10 @@ x.y.z (Backlog)
 
 - Fix a bug that cannot detect the git repo dir when you are already at the git repo dir.
 
+**Miscellaneous**
+
+- Add CLI help info.
+
 
 0.1.1 (2023-10-03)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
