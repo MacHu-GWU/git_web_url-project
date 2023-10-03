@@ -21,6 +21,7 @@ path_git_head = dir_tests.joinpath("test_git_HEAD")
 
 def test_locate_git_repo_dir():
     assert locate_git_repo_dir(Path(__file__).absolute()) == dir_project_root
+    assert locate_git_repo_dir(dir_project_root) == dir_project_root
     with pytest.raises(NotGitRepoError):
         locate_git_repo_dir(Path.home().joinpath("hello", "world", "file.txt"))
 

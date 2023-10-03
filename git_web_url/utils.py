@@ -14,6 +14,10 @@ def locate_git_repo_dir(
 
     :param p_file
     """
+    if p_file.is_dir():
+        p_git_config = Path(p_file, ".git", "config")
+        if p_git_config.exists():
+            return p_file
     for p_dir in p_file.parents:
         p_git_config = Path(p_dir, ".git", "config")
         if p_git_config.exists():
