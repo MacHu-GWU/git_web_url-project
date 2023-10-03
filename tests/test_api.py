@@ -5,6 +5,9 @@ from git_web_url import api
 
 def test():
     _ = api
+    _ = api.PlatformEnum
+    _ = api.ProtocolEnum
+    _ = api.get_web_url
 
 
 if __name__ == "__main__":

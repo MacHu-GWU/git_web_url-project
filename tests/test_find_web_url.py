@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
-from git_web_url.tests.data import CaseEnum
 from git_web_url.find_web_url import get_web_url
 
 dir_doc = Path.home().joinpath("Documents")
 
-def _test_get_web_url_edge_case():
+
+def _test_get_web_url():
     print(get_web_url(dir_doc / "CodeCommit" / "multi_env-project" / "README.rst"))
     print(get_web_url(dir_doc / "BitBucket" / "public" / "license.txt"))
     print(get_web_url(dir_doc / "GitHub" / "afwf_github-project" / "main.py"))
     print(get_web_url(dir_doc / "GitLab" / "woob" / "README.rst"))
 
+
 def test_get_repo_url():
     print("")
-    # _test_get_web_url_all()
-    _test_get_web_url_edge_case()
+    # _test_get_web_url()
 
 
 if __name__ == "__main__":

@@ -34,19 +34,19 @@ class PlatformEnum(str, enum.Enum):
 
 domain_patterns = {
     PlatformEnum.aws_codecommit: [
-        "git-codecommit\.[a-z]{2}-[a-z]+-[0-9]\.amazonaws\.com$",
+        "git-codecommit.[a-z]{2}-[a-z]+-[0-9].amazonaws.com$",
     ],
     PlatformEnum.bitbucket: [
         "bitbucket.org",
-        "bitbucket\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
+        "bitbucket.[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*",
     ],
     PlatformEnum.github: [
         "github.com",
-        "github\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
+        "github.[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*",
     ],
     PlatformEnum.gitlab: [
         "gitlab.com",
-        "gitlab\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*",
+        "gitlab.[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*",
     ],
 }
 for k, v in domain_patterns.items():
@@ -85,9 +85,9 @@ def parse(
     elif remote_origin_url.startswith("codecommit::"):
         protocol = ProtocolEnum.aws_codecommit
     else:
-        raise NotImplementedError
+        raise NotImplementedError(f"unsupported protocol for {remote_origin_url}")
 
-    if debug:
+    if debug:  # pragma: no cover
         print(f"detect protocol: {protocol.value}")
 
     # --- domain
@@ -104,7 +104,7 @@ def parse(
         if ":" in domain:
             domain = domain.split(":", 1)[0]
 
-    if debug:
+    if debug:  # pragma: no cover
         print(f"detect domain: {domain}")
 
     # --- platform
@@ -119,7 +119,7 @@ def parse(
                     platform = platform_candidate
                     break
 
-    if debug:
+    if debug:  # pragma: no cover
         print(f"detect platform: {platform.value}")
 
     # --- owner and repo
@@ -176,7 +176,7 @@ def parse(
                 owner, repo = extract_owner_and_repo_for_github(
                     parts[owner_index], parts[repo_index]
                 )
-                if debug:
+                if debug:  # pragma: no cover
                     print(
                         f"found owner repo at index {(owner_index, repo_index)} in {parts}"
                     )
@@ -191,7 +191,7 @@ def parse(
     else:
         raise NotImplementedError
 
-    if debug:
+    if debug:  # pragma: no cover
         print(f"detect owner: {owner}")
         print(f"detect repo: {repo}")
 
