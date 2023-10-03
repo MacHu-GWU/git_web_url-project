@@ -22,7 +22,7 @@ from .find_repo_url import parse_aws_codecommit_remote_origin_url, get_repo_url
 
 def get_web_url(
     path: Path,
-):
+): # pragma: no cover
     """
     This module implements the logic to find the corresponding web url
     of a local file in a local git repo.

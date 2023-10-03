@@ -7,6 +7,11 @@ dir_doc = Path.home().joinpath("Documents")
 
 
 def _test_get_web_url():
+    print(get_web_url(Path(__file__)))
+    print(get_web_url(Path(__file__).absolute().parent.parent))
+
+
+def _test_get_web_url_edge_case():
     print(get_web_url(dir_doc / "CodeCommit" / "multi_env-project" / "README.rst"))
     print(get_web_url(dir_doc / "BitBucket" / "public" / "license.txt"))
     print(get_web_url(dir_doc / "GitHub" / "afwf_github-project" / "main.py"))
@@ -15,7 +20,8 @@ def _test_get_web_url():
 
 def test_get_repo_url():
     print("")
-    # _test_get_web_url()
+    _test_get_web_url()
+    # _test_get_web_url_edge_case()
 
 
 if __name__ == "__main__":
