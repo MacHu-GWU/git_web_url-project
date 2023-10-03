@@ -1,5 +1,5 @@
 
-.. image:: https://readthedocs.org/projects/git-web-url/badge/?version=latest
+.. .. image:: https://readthedocs.org/projects/git-web-url/badge/?version=latest
     :target: https://git-web-url.readthedocs.io/en/latest/
     :alt: Documentation Status
 
@@ -26,10 +26,10 @@
 
 ------
 
-.. image:: https://img.shields.io/badge/Link-Document-blue.svg
+.. .. image:: https://img.shields.io/badge/Link-Document-blue.svg
     :target: https://git-web-url.readthedocs.io/en/latest/
 
-.. image:: https://img.shields.io/badge/Link-API-blue.svg
+.. .. image:: https://img.shields.io/badge/Link-API-blue.svg
     :target: https://git-web-url.readthedocs.io/en/latest/py-modindex.html
 
 .. image:: https://img.shields.io/badge/Link-Install-blue.svg
@@ -50,7 +50,36 @@
 
 Welcome to ``git_web_url`` Documentation
 ==============================================================================
-Documentation for ``git_web_url``.
+``git_web_url`` is a CLI tool and also a Python library can print the url of a local file in a git repo so you can one-click to open it in web browser.
+
+Currently it supports:
+
+- GitHub
+- GitHub Enterprise
+- GitLab
+- GitLab Enterprise
+- BitBucket
+- BitBucket Enterprise
+- AWS CodeCommit
+
+**Usage Example**
+
+1. **Auto-discover the git repo**:
+
+cd into your git repo directory, or any folder inside, then run ``gwu``, it prints the url for the current branch and the current directory:
+
+.. code-block:: bash
+
+    $ gwu # or gitweburl
+    https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
+
+
+2. **Explicitly specify the file or folder**:
+
+copy the absolute path of the file or folder in your local git repo, then run ``gwu ${absolute_path_here}``:
+
+    $ gwu /Users/myusername/GitHub/your_repo/path/to/your_file
+    https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
 
 
 .. _install:
