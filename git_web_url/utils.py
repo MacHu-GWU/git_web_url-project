@@ -31,3 +31,13 @@ def extract_remote_origin_url(
     config.read(str(p_git_config))
     remote_origin_url = config['remote "origin"']["url"]
     return remote_origin_url
+
+
+def extract_current_branch(
+    p_git_head: Path,
+) -> str:
+    """
+    Extract the current branch from the ``.git/HEAD`` file.
+    """
+    current_branch = p_git_head.read_text().strip().replace("ref: refs/heads/", "")
+    return current_branch
