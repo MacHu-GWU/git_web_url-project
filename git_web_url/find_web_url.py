@@ -35,6 +35,8 @@ def get_web_url(
     repo_url, res = get_repo_url(remote_origin_url)
 
     relative_path = str(path.relative_to(p_git_repo_dir))
+    if relative_path == ".": # if the path is already the root of the repo
+        relative_path = ""
     if res.platform is PlatformEnum.aws_codecommit:
         aws_region = parse_aws_codecommit_remote_origin_url(remote_origin_url)
         return f"{repo_url}/browse/refs/heads/{git_branch}/--/{relative_path}?region={aws_region}"
