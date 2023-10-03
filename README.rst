@@ -78,6 +78,8 @@ cd into your git repo directory, or any folder inside, then run ``gwu``, it prin
 
 copy the absolute path of the file or folder in your local git repo, then run ``gwu ${absolute_path_here}``:
 
+.. code-block:: bash
+
     $ gwu /Users/myusername/GitHub/your_repo/path/to/your_file
     https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
 
