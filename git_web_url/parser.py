@@ -14,6 +14,7 @@ class ProtocolEnum(str, enum.Enum):
     """
     Supported protocols.
     """
+
     https = "https"
     ssh = "ssh"
     aws_codecommit = "aws_codecommit"
@@ -23,6 +24,7 @@ class PlatformEnum(str, enum.Enum):
     """
     Supported git platforms.
     """
+
     aws_codecommit = "aws_codecommit"
     bitbucket = "bitbucket"
     github = "github"
@@ -56,6 +58,7 @@ class ParseResult:
     """
     The result of the :func:`parse`.
     """
+
     protocol: ProtocolEnum = dataclasses.field()
     platform: PlatformEnum = dataclasses.field()
     domain: str = dataclasses.field()
@@ -120,6 +123,12 @@ def parse(
         print(f"detect platform: {platform.value}")
 
     # --- owner and repo
+    def extract_repo(repo_part: str) -> str:
+        if repo_part.endswith(".git"):
+            return repo_part[:-4]
+        else:
+            return repo_part
+
     def extract_owner_and_repo_for_github(
         owner_part: str,
         repo_part: str,
@@ -132,15 +141,15 @@ def parse(
         """
         if protocol == ProtocolEnum.ssh:
             owner = owner_part.split(":")[-1]
-            repo = repo_part.rstrip(".git")
+            repo = extract_repo(repo_part)
         else:
             owner = owner_part
-            repo = repo_part.rstrip(".git")
+            repo = extract_repo(repo_part)
         return owner, repo
 
     if platform is PlatformEnum.aws_codecommit:
         owner = ""
-        repo = parts[-1].rstrip(".git")
+        repo = extract_repo(parts[-1])
     elif platform in [
         PlatformEnum.github,
         PlatformEnum.gitlab,

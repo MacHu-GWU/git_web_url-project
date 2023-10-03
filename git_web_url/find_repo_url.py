@@ -8,16 +8,9 @@ and file.
 """
 
 import typing as T
-from pathlib import Path
 
-from .utils import (
-    locate_git_repo_dir,
-    extract_remote_origin_url,
-    extract_current_branch,
-)
 from .parser import (
     PlatformEnum,
-    ProtocolEnum,
     ParseResult,
     parse,
 )
@@ -46,30 +39,17 @@ def get_aws_codecommit_repo_url(region: str, repo_name: str) -> str:
     return f"https://{region}.console.aws.amazon.com/codesuite/codecommit/repositories/{repo_name}"
 
 
-def get_repo_url_for_aws_codecommit(remote_origin_url: str) -> str:
-    region, repo_name = parse_aws_codecommit_url(remote_origin_url)
-    return get_aws_codecommit_repo_url(region, repo_name)
-
-
 def get_repo_url(
     remote_origin_url: str,
-    debug: bool = False,
-) -> str:
+) -> T.Tuple[str, ParseResult]:
     res = parse(remote_origin_url)
-
-
-    # if remote_origin_url.startswith("codecommit::"):
-    #     return PlatformEnum.aws_codecommit.value, get_repo_url_for_aws_codecommit(
-    #         remote_origin_url
-    #     )
-    #
-    # res = parse(remote_origin_url)
-
     # handler AWS Code Commit
     if res.platform is PlatformEnum.aws_codecommit:
         aws_region = parse_aws_codecommit_remote_origin_url(remote_origin_url)
-        return get_aws_codecommit_repo_url(aws_region, res.repo)
-    if res.domain.startswith("bitbucket.") and (not res.domain.startswith("bitbucket.org")):
-        return f"https://{res.domain}/projects/{res.owner}/repos/{res.repo}"
+        return get_aws_codecommit_repo_url(aws_region, res.repo), res
+    if res.domain.startswith("bitbucket.") and (
+        not res.domain.startswith("bitbucket.org")
+    ):
+        return f"https://{res.domain}/projects/{res.owner}/repos/{res.repo}", res
     else:
-        return f"https://{res.domain}/{res.owner}/{res.repo}"
+        return f"https://{res.domain}/{res.owner}/{res.repo}", res
