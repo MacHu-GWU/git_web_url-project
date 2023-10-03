@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Package Description.
+A CLI tool and also a Python library can print the url of a local file in a git repo so you can one-click to open it in web browser.
 """
 
 from ._version import __version__
 
-__short_description__ = "Package short description."
+__short_description__ = "A CLI tool and also a Python library can print the url of a local file in a git repo so you can one-click to open it in web browser."
 __license__ = "MIT"
 __author__ = "Sanhe Hu"
 __author_email__ = "husanhe@gmail.com"
