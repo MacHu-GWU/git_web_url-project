@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-import typing as T
-import enum
-import dataclasses
-from pathlib import Path
-
 from git_web_url.utils import (
     NotGitRepoError,
     locate_git_repo_dir,
     extract_remote_origin_url,
     extract_current_branch,
 )
+
+import pytest
+from pathlib import Path
 
 dir_tests = Path(__file__).absolute().parent
 dir_project_root = dir_tests.parent
@@ -38,4 +35,8 @@ def test_extract_current_branch():
 if __name__ == "__main__":
     from git_web_url.tests import run_cov_test
 
-    run_cov_test(__file__, "git_web_url.utils", preview=False)
+    run_cov_test(
+        __file__,
+        "git_web_url.utils",
+        preview=False,
+    )

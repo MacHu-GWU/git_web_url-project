@@ -5,7 +5,7 @@ from git_web_url.tests.data import CaseEnum
 from git_web_url.parser import parse
 
 
-def _test_parse_all():
+def test_parse_all():
     for name, case in CaseEnum.iter_items():
         # print(f"{name}: {case.origin_url}")
         result = parse(case.origin_url)
@@ -16,7 +16,7 @@ def _test_parse_all():
         assert result.repo == case.repo
 
 
-def _test_parse_edge_case():
+def test_parse_edge_case():
     case = CaseEnum.aws_codecommit_grc.value
     result = parse(case.origin_url, debug=True)
     print(f"protocol: {result.protocol!r} vs {case.protocol!r}")
@@ -26,13 +26,11 @@ def _test_parse_edge_case():
     print(f"repo: {result.repo!r} vs {case.repo!r}")
 
 
-def test_get_repo_url():
-    print("")
-    _test_parse_all()
-    # _test_parse_edge_case()
-
-
 if __name__ == "__main__":
     from git_web_url.tests import run_cov_test
 
-    run_cov_test(__file__, "git_web_url.parser", preview=False)
+    run_cov_test(
+        __file__,
+        "git_web_url.parser",
+        preview=False,
+    )

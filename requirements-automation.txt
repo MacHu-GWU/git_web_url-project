@@ -1,1 +1,2 @@
-
+fire==0.7.1 ; python_version >= "3.10" and python_version < "4.0"
+termcolor==3.2.0 ; python_version >= "3.10" and python_version < "4.0"
