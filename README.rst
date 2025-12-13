@@ -73,13 +73,34 @@ Git Clone Protocols:
 
 CLI Usage
 ------------------------------------------------------------------------------
-**Basic Usage**
+.. note::
 
-cd into your git repo directory, or any folder inside, then run ``gwu`` (or ``gitweburl``). It prints the URL for the current branch and current directory:
+    **Breaking Change in 1.0.1**: The CLI now uses subcommands. The previous ``gwu`` command
+    is now ``gwu url``. For example, ``gwu /path/to/file`` becomes ``gwu url /path/to/file``.
+
+**General Syntax**
 
 .. code-block:: bash
 
-    $ gwu
+    gwu <subcommand> [options]
+
+**Available Subcommands**
+
+- ``url``: Print the web URL for a file or folder in the git repository.
+- ``relpath``: Print the relative path from the git repository root.
+
+
+The ``url`` Subcommand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Print the web URL you can one-click to open in a web browser.
+
+**Basic Usage**
+
+cd into your git repo directory, or any folder inside, then run ``gwu url`` (or ``gitweburl url``). It prints the URL for the current branch and current directory:
+
+.. code-block:: bash
+
+    $ gwu url
     https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
 
 **Specify a File or Folder**
@@ -88,7 +109,7 @@ Provide the absolute path of the file or folder in your local git repo:
 
 .. code-block:: bash
 
-    $ gwu /path/to/your_repo/path/to/your_file.py
+    $ gwu url /path/to/your_repo/path/to/your_file.py
     https://github.com/your_account/your_repo/blob/your_branch/path/to/your_file.py
 
 **Branch Options**
@@ -98,20 +119,46 @@ Use the ``--branch`` (or ``-b``) flag to control which branch appears in the URL
 .. code-block:: bash
 
     # Use current branch (default behavior)
-    $ gwu
+    $ gwu url
     https://github.com/your_account/your_repo/tree/feature-branch/
 
     # Use default branch (main/master) - URL without explicit branch
-    $ gwu --branch=default
+    $ gwu url --branch=default
     https://github.com/your_account/your_repo
 
     # Use a specific branch
-    $ gwu --branch=main
+    $ gwu url --branch=main
     https://github.com/your_account/your_repo/tree/main/
 
     # Short form
-    $ gwu -b develop
+    $ gwu url -b develop
     https://github.com/your_account/your_repo/tree/develop/
+
+
+The ``relpath`` Subcommand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Print the relative path from the git repository root to the given file or folder.
+
+**Basic Usage**
+
+.. code-block:: bash
+
+    # At repository root, prints "."
+    $ cd /path/to/your_repo
+    $ gwu relpath
+    .
+
+    # In a subdirectory, prints relative path
+    $ cd /path/to/your_repo/src/module
+    $ gwu relpath
+    src/module
+
+**Specify a File or Folder**
+
+.. code-block:: bash
+
+    $ gwu relpath /path/to/your_repo/src/module/file.py
+    src/module/file.py
 
 
 Python API Usage

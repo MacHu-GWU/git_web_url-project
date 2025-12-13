@@ -15,6 +15,19 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
+1.0.1 (2025-12-13)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- Add ``relpath`` subcommand to print the relative path from the git repository root to a given file or folder.
+
+**Breaking Changes**
+
+- Refactor CLI to use subcommand structure. The previous ``gwu`` command is now ``gwu url``.
+    - Before: ``gwu /path/to/file``
+    - After: ``gwu url /path/to/file``
+
+
 0.1.4 (2025-12-13)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Features and Improvements**
