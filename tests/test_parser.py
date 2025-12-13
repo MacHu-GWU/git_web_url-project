@@ -29,10 +29,14 @@ def _test_parse_edge_case():
 def test_get_repo_url():
     print("")
     _test_parse_all()
-    # _test_parse_edge_case()
+    _test_parse_edge_case()
 
 
 if __name__ == "__main__":
     from git_web_url.tests import run_cov_test
 
-    run_cov_test(__file__, "git_web_url.parser", preview=False)
+    run_cov_test(
+        __file__,
+        "git_web_url.parser",
+        preview=False,
+    )
