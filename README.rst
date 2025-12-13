@@ -50,9 +50,11 @@ Welcome to ``git_web_url`` Documentation
 .. image:: https://git-web-url.readthedocs.io/en/latest/_static/git_web_url-logo.png
     :target: https://git-web-url.readthedocs.io/en/latest/
 
-``git_web_url`` is a CLI tool and also a Python library can print the url of a local file in a git repo so you can one-click to open it in web browser.
+``git_web_url`` is a CLI tool and also a Python library that prints the URL of a local file in a git repo so you can one-click to open it in web browser.
 
-Currently it supports:
+**Currently it supports**:
+
+Git Hosting Services:
 
 - GitHub
 - GitHub Enterprise
@@ -62,33 +64,85 @@ Currently it supports:
 - BitBucket Enterprise
 - AWS CodeCommit
 
-**Usage Example**
+Git Clone Protocols:
 
-1. **Auto-discover the git repo**:
-
-cd into your git repo directory, or any folder inside, then run ``gwu``, it prints the url for the current branch and the current directory:
-
-.. code-block:: bash
-
-    $ gwu # or gitweburl
-    https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
+- https
+- ssh
+- aws_codecommit (`git-remote-codecommit <https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html>`_)
 
 
-2. **Explicitly specify the file or folder**:
+CLI Usage
+------------------------------------------------------------------------------
+**Basic Usage**
 
-copy the absolute path of the file or folder in your local git repo, then run ``gwu ${absolute_path_here}``:
+cd into your git repo directory, or any folder inside, then run ``gwu`` (or ``gitweburl``). It prints the URL for the current branch and current directory:
 
 .. code-block:: bash
 
-    $ gwu /Users/myusername/GitHub/your_repo/path/to/your_file
+    $ gwu
     https://github.com/your_account/your_repo/tree/your_branch/path/to/current_directory
+
+**Specify a File or Folder**
+
+Provide the absolute path of the file or folder in your local git repo:
+
+.. code-block:: bash
+
+    $ gwu /path/to/your_repo/path/to/your_file.py
+    https://github.com/your_account/your_repo/blob/your_branch/path/to/your_file.py
+
+**Branch Options**
+
+Use the ``--branch`` (or ``-b``) flag to control which branch appears in the URL:
+
+.. code-block:: bash
+
+    # Use current branch (default behavior)
+    $ gwu
+    https://github.com/your_account/your_repo/tree/feature-branch/
+
+    # Use default branch (main/master) - URL without explicit branch
+    $ gwu --branch=default
+    https://github.com/your_account/your_repo
+
+    # Use a specific branch
+    $ gwu --branch=main
+    https://github.com/your_account/your_repo/tree/main/
+
+    # Short form
+    $ gwu -b develop
+    https://github.com/your_account/your_repo/tree/develop/
+
+
+Python API Usage
+------------------------------------------------------------------------------
+You can also use ``git_web_url`` as a Python library:
+
+.. code-block:: python
+
+    from pathlib import Path
+    import git_web_url.api as gwu
+
+    # Get URL for a file using current branch
+    url = gwu.get_web_url(Path("/path/to/your_repo/file.py"))
+
+    # Get URL using default branch (main/master)
+    url = gwu.get_web_url(
+        Path("/path/to/your_repo/file.py"),
+        branch=gwu.DEFAULT_BRANCH,
+    )
+
+    # Get URL using a specific branch
+    url = gwu.get_web_url(
+        Path("/path/to/your_repo/file.py"),
+        branch="feature-branch",
+    )
 
 
 .. _install:
 
 Install
 ------------------------------------------------------------------------------
-
 ``git_web_url`` is released on PyPI, so all you need is to:
 
 .. code-block:: console
