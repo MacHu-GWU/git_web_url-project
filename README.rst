@@ -1,9 +1,9 @@
 
-.. .. image:: https://readthedocs.org/projects/git-web-url/badge/?version=latest
+.. image:: https://readthedocs.org/projects/git-web-url/badge/?version=latest
     :target: https://git-web-url.readthedocs.io/en/latest/
     :alt: Documentation Status
 
-.. image:: https://github.com/MacHu-GWU/git_web_url-project/workflows/CI/badge.svg
+.. image:: https://github.com/MacHu-GWU/git_web_url-project/actions/workflows/main.yml/badge.svg
     :target: https://github.com/MacHu-GWU/git_web_url-project/actions?query=workflow:CI
 
 .. image:: https://codecov.io/gh/MacHu-GWU/git_web_url-project/branch/main/graph/badge.svg
@@ -18,18 +18,15 @@
 .. image:: https://img.shields.io/pypi/pyversions/git-web-url.svg
     :target: https://pypi.python.org/pypi/git-web-url
 
-.. image:: https://img.shields.io/badge/Release_History!--None.svg?style=social
+.. image:: https://img.shields.io/badge/✍️_Release_History!--None.svg?style=social&logo=github
     :target: https://github.com/MacHu-GWU/git_web_url-project/blob/main/release-history.rst
 
-.. image:: https://img.shields.io/badge/STAR_Me_on_GitHub!--None.svg?style=social
+.. image:: https://img.shields.io/badge/⭐_Star_me_on_GitHub!--None.svg?style=social&logo=github
     :target: https://github.com/MacHu-GWU/git_web_url-project
 
 ------
 
-.. .. image:: https://img.shields.io/badge/Link-Document-blue.svg
-    :target: https://git-web-url.readthedocs.io/en/latest/
-
-.. .. image:: https://img.shields.io/badge/Link-API-blue.svg
+.. image:: https://img.shields.io/badge/Link-API-blue.svg
     :target: https://git-web-url.readthedocs.io/en/latest/py-modindex.html
 
 .. image:: https://img.shields.io/badge/Link-Install-blue.svg
@@ -50,6 +47,9 @@
 
 Welcome to ``git_web_url`` Documentation
 ==============================================================================
+.. image:: https://git-web-url.readthedocs.io/en/latest/_static/git_web_url-logo.png
+    :target: https://git-web-url.readthedocs.io/en/latest/
+
 ``git_web_url`` is a CLI tool and also a Python library can print the url of a local file in a git repo so you can one-click to open it in web browser.
 
 Currently it supports:
