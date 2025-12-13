@@ -7,8 +7,6 @@ Note that the url is the landing page of the repo, not the url of any folder
 and file.
 """
 
-import typing as T
-
 from .parser import (
     PlatformEnum,
     ParseResult,
@@ -35,13 +33,16 @@ def parse_aws_codecommit_remote_origin_url(remote_origin_url: str) -> str:
     return region
 
 
-def get_aws_codecommit_repo_url(region: str, repo_name: str) -> str:
+def get_aws_codecommit_repo_url(
+    region: str,
+    repo_name: str,
+) -> str:
     return f"https://{region}.console.aws.amazon.com/codesuite/codecommit/repositories/{repo_name}"
 
 
 def get_repo_url(
     remote_origin_url: str,
-) -> T.Tuple[str, ParseResult]:
+) -> tuple[str, ParseResult]:
     res = parse(remote_origin_url)
     # handler AWS Code Commit
     if res.platform is PlatformEnum.aws_codecommit:

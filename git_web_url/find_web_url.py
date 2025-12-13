@@ -8,6 +8,7 @@ Basically, it locate the ``.git/config`` file, extract the remote origin url,
 parse it, and then generate the web url.
 """
 
+import typing as T
 from pathlib import Path
 
 from .vendor.git_cli import get_git_commit_id_from_git_cli
@@ -20,9 +21,25 @@ from .parser import PlatformEnum
 from .find_repo_url import parse_aws_codecommit_remote_origin_url, get_repo_url
 
 
+class _CurrentBranch:
+    """Sentinel class representing the current git branch."""
+
+    pass
+
+
+class _DefaultBranch:
+    """Sentinel class representing the default branch (main/master)."""
+
+    pass
+
+
+CURRENT_BRANCH: _CurrentBranch = _CurrentBranch()
+DEFAULT_BRANCH: _DefaultBranch = _DefaultBranch()
+
+
 def get_web_url(
     path: Path,
-    branch: str = None,
+    branch: T.Union[str, _CurrentBranch, _DefaultBranch] = CURRENT_BRANCH,
 ):  # pragma: no cover
     """
     This module implements the logic to find the corresponding web url
@@ -30,9 +47,9 @@ def get_web_url(
 
     :param path: The local file or directory path.
     :param branch: The branch to use in the URL.
-        - None: use current branch (default behavior)
-        - "_default": use the default branch (URL without explicit branch)
-        - other string: use the specified branch
+        - CURRENT_BRANCH: use current branch (default behavior)
+        - DEFAULT_BRANCH: use the default branch (URL without explicit branch)
+        - str: use the specified branch name
     """
     p_git_repo_dir = locate_git_repo_dir(path)
     remote_origin_url = extract_remote_origin_url(
@@ -41,9 +58,9 @@ def get_web_url(
     repo_url, res = get_repo_url(remote_origin_url)
 
     # Determine git_branch based on branch parameter
-    if branch is None:
+    if isinstance(branch, _CurrentBranch):
         git_branch = extract_current_branch(p_git_repo_dir.joinpath(".git", "HEAD"))
-    elif branch == "_default":
+    elif isinstance(branch, _DefaultBranch):
         git_branch = None  # Will generate URL without branch (default branch)
     else:
         git_branch = branch
