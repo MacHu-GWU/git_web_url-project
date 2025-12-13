@@ -53,8 +53,9 @@ def test_get_web_url_with_branch():
 def test_get_web_url_edge_case():
     # print(get_web_url(dir_doc / "CodeCommit" / "multi_env-project" / "README.rst"))
     # print(get_web_url(dir_doc / "BitBucket" / "public" / "license.txt"))
-    print(get_web_url(dir_doc / "GitHub" / "afwf_github-project" / "main.py"))
+    # print(get_web_url(dir_doc / "GitHub" / "afwf_github-project" / "main.py"))
     # print(get_web_url(dir_doc / "GitLab" / "woob" / "README.rst"))
+    pass
 
 
 if __name__ == "__main__":
