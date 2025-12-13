@@ -15,6 +15,22 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
+0.1.4 (2025-12-13)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- Add ``branch`` parameter to ``get_web_url`` function, allowing users to specify which branch to use in the generated URL:
+    - ``CURRENT_BRANCH``: use the current git branch (default behavior)
+    - ``DEFAULT_BRANCH``: use the default branch (main/master), generates URL without explicit branch
+    - Any string: use the specified branch name
+- Add ``CURRENT_BRANCH`` and ``DEFAULT_BRANCH`` sentinel constants to the public API.
+- Add ``--branch`` (or ``-b``) flag to CLI commands (``gwu`` and ``gitweburl``).
+
+**Miscellaneous**
+
+- Improve documentation with CLI usage examples and Python API usage examples.
+
+
 0.1.3 (2023-10-03)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Bugfixes**
