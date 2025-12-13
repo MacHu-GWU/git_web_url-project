@@ -43,6 +43,7 @@ classifier = [
 # Core Dependencies
 # ------------------------------------------------------------------------------
 dependencies = [
+    "fire>=0.6.0,<1.0.0"
 ]
 
 # ------------------------------------------------------------------------------
@@ -105,6 +106,8 @@ Download = "https://pypi.org/pypi/git-web-url#files"
 
 # For command line interface, read: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts
 [project.scripts]
+gitweburl = "git_web_url.cli:run"
+gwu = "git_web_url.cli:run"
 
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.9.0,<2.0.0"
