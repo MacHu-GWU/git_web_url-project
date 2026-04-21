@@ -15,6 +15,18 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
+1.0.2 (2026-04-21)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- Add a bundled Claude Code skill at `.claude/skills/git-web-url/ <https://github.com/MacHu-GWU/git_web_url-project/tree/main/.claude/skills/git-web-url>`_ so AI assistants automatically know how to invoke ``gwu`` (or via ``uvx``) when working inside a git repository.
+
+**Miscellaneous**
+
+- Add Python 3.14 to the CI test matrix.
+- Migrate development tooling to ``uv`` (package management) and ``mise`` (task runner).
+
+
 1.0.1 (2025-12-13)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Features and Improvements**

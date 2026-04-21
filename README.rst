@@ -71,6 +71,11 @@ Git Clone Protocols:
 - aws_codecommit (`git-remote-codecommit <https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html>`_)
 
 
+Claude Code Skill
+------------------------------------------------------------------------------
+A ready-to-use Claude Code skill is bundled at `.claude/skills/git-web-url/ <https://github.com/MacHu-GWU/git_web_url-project/tree/main/.claude/skills/git-web-url>`_. Copy it into your own project's ``.claude/skills/`` directory and Claude will automatically know how to invoke ``gwu`` (or via ``uvx``) when you ask it to get the web URL of a file in your repo.
+
+
 CLI Usage
 ------------------------------------------------------------------------------
 .. note::
